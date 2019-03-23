@@ -42,7 +42,6 @@ class MeetPlayers extends Component {
                     Meet
                   </Tag>
                 </div>
-                <br />
                 <div>
                   <Tag
                     bck="#0e1731"
@@ -56,7 +55,6 @@ class MeetPlayers extends Component {
                     The
                   </Tag>
                 </div>
-                <br />
                 <div>
                   <Tag
                     bck="#0e1731"
@@ -70,8 +68,6 @@ class MeetPlayers extends Component {
                     Players
                   </Tag>
                 </div>
-                <br />
-                <br />
                 <div>
                   <Tag
                     bck="#ffffff"
@@ -79,7 +75,7 @@ class MeetPlayers extends Component {
                     color="#0e1731"
                     link={true}
                     linkto="/the_team"
-                    style={{
+                    add={{
                       display: "inline-block",
                       marginBottom: "27px",
                       border: "1px solid #0e1731"
