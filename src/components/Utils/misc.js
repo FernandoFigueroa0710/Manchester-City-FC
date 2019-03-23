@@ -9,14 +9,15 @@ export const Tag = props => {
         fontSize: props.size,
         color: props.color,
         padding: "5px 10px",
-        diplay: "inline-block",
+        display: "inline-block",
         fontFamily: "Righteous",
-        textAlign: "center"
+        ...props.add
       }}
     >
       {props.children}
     </div>
   );
+
   if (props.link) {
     return <Link to={props.linkto}>{template}</Link>;
   } else {
