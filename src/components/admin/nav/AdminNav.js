@@ -40,14 +40,17 @@ const AdminNav = () => {
     ));
 
   const logoutHandler = () => {
-    firebase.auth().signOut.then(
-      () => {
-        console.log("Logout Sucess");
-      },
-      error => {
-        console.log("error Loging out");
-      }
-    );
+    firebase
+      .auth()
+      .signOut()
+      .then(
+        () => {
+          console.log("Logout Sucess");
+        },
+        error => {
+          console.log("error Loging out");
+        }
+      );
   };
   return (
     <List>
