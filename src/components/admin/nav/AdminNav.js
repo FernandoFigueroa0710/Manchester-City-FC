@@ -12,7 +12,7 @@ const AdminNav = () => {
     },
     {
       title: "Add Match",
-      linkTo: "/admin_matches/edit_match/:id"
+      linkTo: "/admin_matches/edit_match"
     },
     {
       title: "Players",
