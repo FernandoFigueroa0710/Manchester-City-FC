@@ -176,6 +176,27 @@ class AddEditMatch extends Component {
     });
   }
 
+  updateFields(match, teamOptions, teams, type, matchId) {
+    const newFormdata = {
+      ...this.state.formdata
+    };
+    for (let key in newFormdata) {
+      if (match) {
+        newFormdata[key].value = match[key];
+        newFormdata[key].valid = true;
+      }
+      if (key === "local" || key === "away") {
+        newFormdata[key].config.options = teamOptions;
+      }
+    }
+    this.setState({
+      matchId,
+      formType: type,
+      formdata: newFormdata,
+      teams
+    });
+  }
+
   componentDidMount() {
     const matchId = this.props.match.params.id;
     const getTeams = (match, type) => {
@@ -189,6 +210,7 @@ class AddEditMatch extends Component {
             value: childSnapshot.val().shortName
           });
         });
+        this.updateFields(match, teamOptions, teams, type, matchId);
       });
     };
 
@@ -287,7 +309,9 @@ class AddEditMatch extends Component {
                 ""
               )}
               <div className="admin_submit">
-                <button onClick={event => this.submitForm(event)} />
+                <button onClick={event => this.submitForm(event)}>
+                  Edit Match
+                </button>
               </div>
             </form>
           </div>
