@@ -215,7 +215,7 @@ class AddEditMatch extends Component {
     };
 
     if (!matchId) {
-      //add match
+      getTeams(false, "Add Match");
     } else {
       firebaseDB
         .ref(`matches/${matchId}`)
@@ -226,7 +226,66 @@ class AddEditMatch extends Component {
         });
     }
   }
+  successForm(message) {
+    this.setState({
+      formSucess: message
+    });
+    setTimeout(() => {
+      this.setState({
+        formSucess: ""
+      });
+    }, 2000);
+  }
+  submitForm(event) {
+    event.preventDefault();
+    let dataToSubmit = {};
+    let formIsValid = true;
 
+    for (let key in this.state.formdata) {
+      dataToSubmit[key] = this.state.formdata[key].value;
+      formIsValid = this.state.formdata[key].valid && formIsValid;
+    }
+
+    this.state.teams.forEach(team => {
+      if (team.shortName === dataToSubmit.local) {
+        dataToSubmit["localThumb"] = team.thmb;
+      }
+      if (team.shortName === dataToSubmit.away) {
+        dataToSubmit["awayThumb"] = team.thmb;
+      }
+    });
+
+    if (formIsValid) {
+      if (this.state.formType === "Edit Match") {
+        firebaseDB
+          .ref(`matches/${this.state.matchId}`)
+          .update(dataToSubmit)
+          .then(() => {
+            this.successForm("Updated Correctly ");
+          })
+          .catch(err => {
+            this.setState({
+              formError: true
+            });
+          });
+      } else {
+        firebaseMatches
+          .push(dataToSubmit)
+          .then(() => {
+            this.props.history.push("/admin_matches");
+          })
+          .catch(e => {
+            this.setState({
+              formError: true
+            });
+          });
+      }
+    } else {
+      this.setState({
+        formError: true
+      });
+    }
+  }
   render() {
     return (
       <AdminLayout>
@@ -310,7 +369,7 @@ class AddEditMatch extends Component {
               )}
               <div className="admin_submit">
                 <button onClick={event => this.submitForm(event)}>
-                  Edit Match
+                  {this.state.formType}
                 </button>
               </div>
             </form>

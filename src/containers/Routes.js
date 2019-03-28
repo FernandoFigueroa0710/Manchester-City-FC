@@ -17,6 +17,12 @@ const Routes = props => {
       <Switch>
         <PrivateRoute
           {...props}
+          path="/admin_matches/edit_match"
+          extact
+          component={AddEditMatch}
+        />
+        <PrivateRoute
+          {...props}
           path="/admin_matches/edit_match/:id"
           extact
           component={AddEditMatch}
