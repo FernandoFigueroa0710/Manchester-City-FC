@@ -213,7 +213,6 @@ class AddEditMatch extends Component {
         this.updateFields(match, teamOptions, teams, type, matchId);
       });
     };
-
     if (!matchId) {
       getTeams(false, "Add Match");
     } else {
