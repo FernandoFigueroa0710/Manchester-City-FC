@@ -10,7 +10,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import { firebaseMatches } from "../../../firebase";
+import { firebasePlayers } from "../../../firebase";
 import { firebaseLooper, reverseArray } from "../../Utils/misc";
 
 class AdminPlayers extends Component {
@@ -19,9 +19,18 @@ class AdminPlayers extends Component {
     players: []
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    firebasePlayers.once("value").then(snapshot => {
+      const players = firebaseLooper(snapshot);
+      this.setState({
+        isLoading: false,
+        players: reverseArray(players)
+      });
+    });
+  }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <div>Players</div>
