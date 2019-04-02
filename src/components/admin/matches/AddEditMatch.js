@@ -371,17 +371,6 @@ class AddEditMatch extends Component {
                   {this.state.formType}
                 </button>
               </div>
-              <div className="sucess_label">{this.state.formSucess}</div>
-              {this.state.formError ? (
-                <div className="error_label">Something is Wrong!</div>
-              ) : (
-                ""
-              )}
-              <div className="admin_submit">
-                <button onClick={event => this.submitForm(event)}>
-                  {this.state.formType}
-                </button>
-              </div>
             </form>
           </div>
         </div>
