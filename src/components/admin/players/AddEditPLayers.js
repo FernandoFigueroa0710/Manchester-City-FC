@@ -109,7 +109,7 @@ class AddEditPLayers extends Component {
 
     if (!playerId) {
       this.setState({
-        formType: "Add Player"
+        formType: "Add player"
       });
     } else {
       firebaseDB
