@@ -6,7 +6,6 @@ import { validate } from "../../Utils/misc";
 import Fileuploader from "../../Utils/FileUploader";
 
 import { firebaseDB, firebasePlayers, firebase } from "../../../firebase";
-import { firebaseLooper } from "../../Utils/misc";
 
 class AddEditPLayers extends Component {
   state = {
@@ -99,9 +98,9 @@ class AddEditPLayers extends Component {
       newFormdata[key].valid = true;
     }
     this.setState({
-      playerId,
-      defaultImg,
-      formType,
+      playerId: playerId,
+      defaultImg: defaultImg,
+      formType: formType,
       formdata: newFormdata
     });
   };
@@ -125,7 +124,18 @@ class AddEditPLayers extends Component {
             .child(playerData.image)
             .getDownloadURL()
             .then(url => {
-              this.updateFields(playerData, playerId, "Edit Player");
+              this.updateFields(playerData, playerId, "Edit player", url);
+            })
+            .catch(e => {
+              this.updateFields(
+                {
+                  ...playerData,
+                  image: ""
+                },
+                playerId,
+                "Edit player",
+                ""
+              );
             });
         });
     }
@@ -152,6 +162,18 @@ class AddEditPLayers extends Component {
       formdata: newFormdata
     });
   }
+
+  sucessForm = message => {
+    this.setState({
+      formSucess: message
+    });
+    setTimeout(() => {
+      this.setState({
+        formSucess: ""
+      });
+    }, 2000);
+  };
+
   submitForm(event) {
     event.preventDefault();
     let dataToSubmit = {};
@@ -164,7 +186,17 @@ class AddEditPLayers extends Component {
 
     if (formIsValid) {
       if (this.state.formType === "Edit player") {
-        /////
+        firebaseDB
+          .ref(`players/${this.state.playerId}`)
+          .update(dataToSubmit)
+          .then(() => {
+            this.sucessForm("Update correctly");
+          })
+          .catch(err => {
+            this.setState({
+              formError: true
+            });
+          });
       } else {
         firebasePlayers
           .push(dataToSubmit)
@@ -204,8 +236,6 @@ class AddEditPLayers extends Component {
   };
 
   render() {
-    console.log(this.state.formdata);
-
     return (
       <AdminLayout>
         <div className="editplayers_dialog_wrapper">
