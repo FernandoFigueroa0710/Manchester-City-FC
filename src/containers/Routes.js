@@ -7,7 +7,7 @@ import SignIn from "../components/signin";
 import PrivateRoute from "../components/authRoutes/PrivateRoutes";
 import PublicRoute from "../components/authRoutes/PublicRoutes";
 
-import Dashborad from "../components/admin/Dashboard";
+import Dashboard from "../components/admin/Dashboard";
 import AdminMatches from "../components/admin/matches/";
 import AddEditMatch from "../components/admin/matches/AddEditMatch";
 import AdminPlayers from "../components/admin/players";
@@ -20,57 +20,57 @@ const Routes = props => {
         <PrivateRoute
           {...props}
           path="/admin_players/add_players"
-          extact
+          exact
           component={AddEditPlayers}
         />
         <PrivateRoute
           {...props}
           path="/admin_players/add_players/:id"
-          extact
+          exact
           component={AddEditPlayers}
         />
         <PrivateRoute
           {...props}
           path="/admin_players"
-          extact
+          exact
           component={AdminPlayers}
         />
         <PrivateRoute
           {...props}
           path="/admin_matches/edit_match"
-          extact
+          exact
           component={AddEditMatch}
         />
         <PrivateRoute
           {...props}
           path="/admin_matches/edit_match/:id"
-          extact
+          exact
           component={AddEditMatch}
         />
         <PrivateRoute
           {...props}
           path="/admin_matches"
-          extact
+          exact
           component={AdminMatches}
         />
         <PrivateRoute
           {...props}
           path="/dashboard"
-          extact
-          component={Dashborad}
+          exact
+          component={Dashboard}
         />
         <PublicRoute
           {...props}
           restricted={true}
+          path="/sign_in"
           exact
           component={SignIn}
-          path="/sign_in"
         />
         <PublicRoute
           {...props}
           restricted={false}
           path="/"
-          extact
+          exact
           component={Home}
         />
       </Switch>
