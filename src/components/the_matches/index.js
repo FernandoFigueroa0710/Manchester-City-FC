@@ -86,7 +86,7 @@ class TheMatches extends Component {
                 <div className="cont">
                   <div
                     className={`option ${
-                      this.state.playedFilter === "All" ? "active" : ""
+                      this.state.resultFilter === "All" ? "active" : ""
                     }`}
                     onClick={() => this.showResult("All")}
                   >
