@@ -2,12 +2,14 @@ import React from "react";
 import Layout from "../HOC/Layout";
 import { Switch } from "react-router-dom";
 
+import PrivateRoute from "../components/authRoutes/PrivateRoutes";
+import PublicRoute from "../components/authRoutes/PublicRoutes";
+
 import Home from "../components/home";
 import SignIn from "../components/signin";
 import TheTeam from "../components/the_team";
 import TheMatches from "../components/the_matches";
-import PrivateRoute from "../components/authRoutes/PrivateRoutes";
-import PublicRoute from "../components/authRoutes/PublicRoutes";
+import NotFound from "../components/Utils/Not_Found";
 
 import Dashboard from "../components/admin/Dashboard";
 import AdminMatches from "../components/admin/matches/";
@@ -89,6 +91,7 @@ const Routes = props => {
           exact
           component={Home}
         />
+        <PublicRoute {...props} restricted={false} exact component={NotFound} />
       </Switch>
     </Layout>
   );

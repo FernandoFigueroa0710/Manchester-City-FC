@@ -121,9 +121,17 @@ class TheMatches extends Component {
             </div>
             <MatchesList matches={this.state.filteredMatches} />
           </div>
+
           <div className="right">
             <LeagueTable />
           </div>
+        </div>
+        <div className="admin_progress">
+          {this.state.isLoading ? (
+            <CircularProgress thickness={6} style={{ color: "#98c5e9" }} />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     );
