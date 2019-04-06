@@ -20,18 +20,17 @@ class TheMatches extends Component {
       this.setState({
         isLoading: false,
         matches: reverseArray(matches),
-        filteredMatches: reverseArray(snapshot)
+        filteredMatches: reverseArray(matches)
       });
     });
   }
   render() {
-    const state = this.state;
     return (
       <div className="the_matches_container">
         <div className="the_matches_wrapper">
           <div className="left">
             <div className="match_filters" />
-            <MatchesList matches={state.filteredMatches} />
+            <MatchesList matches={this.state.filteredMatches} />
           </div>
           <div className="right">
             <LeagueTable />
