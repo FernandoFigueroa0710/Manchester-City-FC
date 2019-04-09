@@ -4,12 +4,12 @@ Manchester City FC is a static webpage as a homage to the English Soccer club fr
 
 ![alt text](https://github.com/FernandoFigueroa0710/Manchester-City-FC/blob/master/src/Resources/screenshots/Screen%20Shot%202019-04-08%20at%2022.59.53.png)
 
-## What have I leaned on this project?
+## What have I learned on this project?
 
 - The MVC model architecture for React
 - The creation and implementation of High Order Components (HOC) in React
 - The creation and implementation of reusable components and functions in React
-- Complex animations and transitions using:
+- Complex animations and transitions using:<br/>
   [React Move](https://react-move.js.org/#/)<br/>
   [React Reveal](https://www.react-reveal.com/)<br/>
   [d3-ease](https://d3js.org/)<br/>
@@ -22,6 +22,8 @@ Manchester City FC is a static webpage as a homage to the English Soccer club fr
 - The use of [Firebase](https://firebase.google.com/) as a database and image store for images upload
 - Effective communication with Firebase database to perform CRUD operations
 - Deployment of Static web app with [Heroku](https://www.heroku.com/)
+
+### You can see the app live [HERE](https://manchester-city-fc.herokuapp.com)
 
 ## To get started
 
