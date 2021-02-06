@@ -55,9 +55,11 @@ const AdminNav = () => {
   return (
     <List>
       {renderItems()}
+      <Link to="sign_in">
       <ListItem button style={style} onClick={() => logoutHandler()}>
         Logout
       </ListItem>
+      </Link>
     </List>
   );
 };
